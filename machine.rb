@@ -38,20 +38,20 @@ drum_kits = {
     snare: :elec_pop
   }
 }
-#####################################################################################################
-#params:
-set :bpm , 80
-current_drum_kit = drum_kits[:acoustic_soft]
-current_drum_pattern = drum_patterns[:swing]
-#####################################################################################################
-set :patern_length, current_drum_pattern[:hat].length
 
-live_loop :pulse do
+#####################################################################################################
+set :bpm , 200
+current_drum_kit = drum_kits[:acoustic]
+current_drum_pattern = drum_patterns[:basic]
+#####################################################################################################
+
+live_loop :pulse do # simple pulse, to synch
   use_bpm get(:bpm)
   sleep 0.25
 end
 
-in_thread(name: :iterator) do
+set :patern_length, current_drum_pattern[:hat].length
+in_thread(name: :iterator) do  # to stay in correct beat/pos
   set :it, 0
   loop do
     sync :pulse
@@ -59,7 +59,7 @@ in_thread(name: :iterator) do
   end
 end
 
-live_loop :machine do
+live_loop :machine do # the achim
   i = get[:it]
   sync :pulse
   sample current_drum_kit[:hat],       amp: current_drum_pattern[:hat][i] * 0.9
