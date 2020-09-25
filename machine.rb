@@ -5,14 +5,14 @@ drum_patterns = {
     snare: [0, 0, 0, 0,  9, 0, 0, 2,  0, 1, 0, 0,  9, 0, 0, 1]
   },
   swing: {
-    hat:   [5, 0, 5, 0,  5, 0, 5, 0,  5, 0, 5, 0,  5, 0, 5, 0],
+    hat:   [5, 0, 5, 0,  2, 0, 2, 0,  5, 0, 5, 0,  5, 0, 5, 0],
     kick:  [0, 9, 0, 9,  0, 0, 0, 0,  0, 9, 0, 3,  0, 0, 0, 0],
     snare: [0, 0, 0, 0,  9, 0, 0, 2,  0, 1, 0, 0,  9, 0, 0, 1]
   },
-  test: {
-    hat:   [5, 0, 5, 0,  9],
-    kick:  [0, 9, 0, 9, 9],
-    snare: [0, 0, 0, 0,  9, 0, 0, 2,  0, 1, 0, 0,  9, 0, 0, 1]
+  poly: {
+    hat:   [5, 0, 0, 0,  0, 0, 0],
+    kick:  [9, 0, 0, 0,  9, 0, 0, 9],
+    snare: [0, 0, 0, 0,  7, 0]
   }
 }
 
@@ -36,13 +36,26 @@ drum_kits = {
     hat:   :elec_tick,
     kick:  :elec_hollow_kick,
     snare: :elec_pop
+  },
+  house: {
+    hat:   :perc_snap,
+    kick:  :bd_haus,
+    snare: :bd_zome
   }
+  
+  #kick: bd_ada, :bd_sone
+  # trash: sn_generic
 }
 
 #####################################################################################################
-set :bpm , 200
-current_drum_kit = drum_kits[:acoustic]
+set :bpm , 100
+current_drum_kit = drum_kits[:house]
 current_drum_pattern = drum_patterns[:basic]
+
+#fade masters:
+set :hat_fac , 0.2
+set :kick_fac, 1.0#.1
+set :snare_fac, 1.0
 #####################################################################################################
 
 live_loop :pulse do # simple pulse, to synch
@@ -50,19 +63,28 @@ live_loop :pulse do # simple pulse, to synch
   sleep 0.25
 end
 
-set :patern_length, current_drum_pattern[:hat].length
+set :hat_patern_length, current_drum_pattern[:hat].length
+set :kick_pattern_length, current_drum_pattern[:kick].length
+set :snare_pattern_length, current_drum_pattern[:snare].length
 in_thread(name: :iterator) do  # to stay in correct beat/pos
-  set :it, 0
+  set :it_hat, 0
+  set :it_kick, 0
+  set :it_snare, 0
   loop do
     sync :pulse
-    set :it, (get[:it]+1) % get[:patern_length]
+    set :it_hat, ((get[:it_hat]+1) % get[:hat_patern_length])
+    set :it_kick, ((get[:it_kick]+1) % get[:kick_pattern_length])
+    set :it_snare, ((get[:it_snare]+1) % get[:snare_pattern_length])
   end
 end
 
-live_loop :machine do # the achim
-  i = get[:it]
+
+live_loop :machine do
+  i_hat = get[:it_hat]
+  i_kick = get[:it_kick]
+  i_snare = get[:it_snare]
   sync :pulse
-  sample current_drum_kit[:hat],       amp: current_drum_pattern[:hat][i] * 0.9
-  sample current_drum_kit[:kick],      amp: current_drum_pattern[:kick][i] * 0.9
-  sample current_drum_kit[:snare],     amp: current_drum_pattern[:snare][i] *0.9
+  sample current_drum_kit[:hat],       amp: current_drum_pattern[:hat][i_hat] * 0.9 * get[:hat_fac]
+  sample current_drum_kit[:kick],      amp: current_drum_pattern[:kick][i_kick] * 0.9 * get[:kick_fac]
+  sample current_drum_kit[:snare],     amp: current_drum_pattern[:snare][i_snare] *0.9 * get[:snare_fac]
 end
