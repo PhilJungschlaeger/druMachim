@@ -1,0 +1,151 @@
+# Bass
+    sample :bd_ada
+    sample :bd_pure
+    sample :bd_808
+    sample :bd_zum
+    sample :bd_gas
+    sample :bd_sone
+    sample :bd_haus
+    sample :bd_zome
+    sample :bd_boom
+    sample :bd_klub
+    sample :bd_fat
+    sample :bd_tek
+    sample :bd_mehackit
+
+# Snare
+    sample :sn_dub
+    sample :sn_dolf
+    sample :sn_zome
+    sample :sn_generic
+
+# Percussions
+    sample :perc_bell
+    sample :perc_bell2
+    sample :perc_snap
+    sample :perc_snap2
+    sample :perc_swash
+    sample :perc_till
+    sample :perc_door
+    sample :perc_impact1
+    sample :perc_impact2
+    sample :perc_swoosh
+
+# Drum
+    sample :drum_heavy_kick
+    sample :drum_tom_mid_soft
+    sample :drum_tom_mid_hard
+    sample :drum_tom_lo_soft
+    sample :drum_tom_lo_hard
+    sample :drum_tom_hi_soft
+    sample :drum_tom_hi_hard
+    sample :drum_splash_soft
+    sample :drum_splash_hard
+    sample :drum_snare_soft
+    sample :drum_snare_hard
+    sample :drum_cymbal_soft
+    sample :drum_cymbal_hard
+    sample :drum_cymbal_open
+    sample :drum_cymbal_closed
+    sample :drum_cymbal_pedal
+    sample :drum_bass_soft
+    sample :drum_bass_hard
+    sample :drum_cowbell
+    sample :drum_roll
+
+# Electric
+    sample :elec_triangle
+    sample :elec_snare
+    sample :elec_lo_snare
+    sample :elec_hi_snare
+    sample :elec_mid_snare
+    sample :elec_cymbal
+    sample :elec_soft_kick
+    sample :elec_filt_snare
+    sample :elec_fuzz_tom
+    sample :elec_chime
+    sample :elec_bong
+    sample :elec_twang
+    sample :elec_wood
+    sample :elec_pop
+    sample :elec_beep
+    sample :elec_blip
+    sample :elec_blip2
+    sample :elec_ping
+    sample :elec_bell
+    sample :elec_flip
+    sample :elec_tick
+    sample :elec_hollow_kick
+    sample :elec_twip
+    sample :elec_plip
+    sample :elec_blup
+
+# Bass
+    sample :bass_hit_c
+    sample :bass_hard_c
+    sample :bass_thick_c
+    sample :bass_drop_c
+    sample :bass_woodsy_c
+    sample :bass_voxy_c
+    sample :bass_voxy_hit_c
+    sample :bass_dnb_f
+# Ambient
+    sample :ambi_soft_buzz
+    sample :ambi_swoosh
+    sample :ambi_drone
+    sample :ambi_glass_hum
+    sample :ambi_glass_rub
+    sample :ambi_haunted_hum
+    sample :ambi_piano
+    sample :ambi_lunar_land
+    sample :ambi_dark_woosh
+    sample :ambi_choir
+    sample :ambi_sauna
+# Loops
+    sample :loop_industrial
+    sample :loop_compus
+    sample :loop_amen
+    sample :loop_amen_full
+    sample :loop_garzul
+    sample :loop_mika
+    sample :loop_breakbeat
+    sample :loop_safari
+    sample :loop_tabla
+    sample :loop_3d_printer
+    sample :loop_drone_g_97
+    sample :loop_electric
+    sample :loop_mehackit1
+    sample :loop_mehackit2
+    sample :loop_perc1
+    sample :loop_perc2
+    sample :loop_weirdo 
+# Glitchy
+    sample :glitch_bass_g
+    sample :glitch_perc1
+    sample :glitch_perc2
+    sample :glitch_perc3
+    sample :glitch_perc4
+    sample :glitch_perc5
+    sample :glitch_robot1
+    sample :glitch_robot2
+# Mehackit
+    sample :mehackit_phone1
+    sample :mehackit_phone2
+    sample :mehackit_phone3
+    sample :mehackit_phone4
+    sample :mehackit_robot1
+    sample :mehackit_robot2
+    sample :mehackit_robot3
+    sample :mehackit_robot4
+    sample :mehackit_robot5
+    sample :mehackit_robot6
+    sample :mehackit_robot7 
+# Misc
+    sample :misc_burp
+    sample :misc_crow
+    sample :misc_cineboom 
+# Guitar
+    sample :guit_harmonics
+    sample :guit_e_fifths
+    sample :guit_e_slide
+    sample :guit_em9 

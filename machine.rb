@@ -1,6 +1,12 @@
 drum_patterns = {
+  
+  curr: {
+    hat:   [5, 0, 0, 0,  5, 0, 0, 0,  5, 0, 0, 0,  5, 0, 0, 9],
+    kick:  [9, 9, 0, 9,  0, 9, 0, 9,  0, 0, 0, 3,  0, 0, 0, 0],
+    snare: [0, 0, 0, 0,  9, 0, 0, 2,  0, 1, 0, 0,  9, 0, 0, 1]
+  },
   basic: {
-    hat:   [5, 0, 5, 0,  5, 0, 5, 0,  5, 0, 5, 0,  5, 0, 5, 0],
+    hat:   [5, 0, 5, 0,  5, 0, 5, 0,  5, 0, 5, 0,  5, 0, 0, 0],
     kick:  [9, 0, 9, 0,  0, 0, 0, 0,  9, 0, 0, 3,  0, 0, 0, 0],
     snare: [0, 0, 0, 0,  9, 0, 0, 2,  0, 1, 0, 0,  9, 0, 0, 1]
   },
@@ -10,9 +16,14 @@ drum_patterns = {
     snare: [0, 0, 0, 0,  9, 0, 0, 2,  0, 1, 0, 0,  9, 0, 0, 1]
   },
   poly: {
-    hat:   [5, 0, 0, 0,  0, 0, 0],
+    hat:   [5, 4, 3, 1,  0, 0, 9, 0, 0, 0, 0, 0, 0, 0],
+    kick:  [9, 0, 0, 9,  9, 0, 0, 9],
+    snare: [0, 1, 2, 3,  4, 5, 0, 5, 0, 5, 0, 0, 9, 0, 0]
+  },
+  polyBackUp: {
+    hat:   [5, 4, 3, 1,  0, 0, 9, 0, 0],
     kick:  [9, 0, 0, 0,  9, 0, 0, 9],
-    snare: [0, 0, 0, 0,  7, 0]
+    snare: [0, 1, 6, 0,  7, 0]
   }
 }
 
@@ -41,6 +52,11 @@ drum_kits = {
     hat:   :perc_snap,
     kick:  :bd_haus,
     snare: :bd_zome
+  },
+  house2: {
+    hat:   :perc_snap,
+    kick:  :bd_haus,
+    snare: :elec_pop
   }
   
   #kick: bd_ada, :bd_sone
@@ -48,14 +64,14 @@ drum_kits = {
 }
 
 #####################################################################################################
-set :bpm , 100
-current_drum_kit = drum_kits[:house]
-current_drum_pattern = drum_patterns[:basic]
+set :bpm , 110
+current_drum_kit = drum_kits[:house2]
+current_drum_pattern = drum_patterns[:polyBackUp]
 
 #fade masters:
-set :hat_fac , 0.2
-set :kick_fac, 1.0#.1
-set :snare_fac, 1.0
+set :hat_fac , 0.9
+set :kick_fac, 0.9
+set :snare_fac, 0.9
 #####################################################################################################
 
 live_loop :pulse do # simple pulse, to synch
