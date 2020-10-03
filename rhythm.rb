@@ -1,3 +1,16 @@
+#todo:
+# - puma blue midnight blue beat
+# - lofi beat
+# - basic goa
+# - minimal
+# - baltimore
+# - trip hop?
+# - dub step
+# - reggae
+# - house
+# - R & B
+# - Jazz
+
 drum_patterns = {
     basic: {
         hat:   [5, 0, 5, 0,  5, 0, 5, 0,  5, 0, 5, 0,  5, 0, 5, 0],
@@ -22,5 +35,14 @@ drum_patterns = {
         hat:   [5, 4, 3, 1,  0, 0, 9, 0, 0],
         kick:  [9, 0, 0, 0,  1, 0, 0, 9],
         snare: [0, 0, 0, 0,  7, 0]
-    }
+    },
+    # foot work 
+    # https://blog.zzounds.com/2016/02/16/beat-connection-footwork/#prettyPhoto
+    # at 140 bpm (langsamer bei 100bpm auch ganz nice)
+    # 
+    footwork: {
+    hat:   [9, 0, 0, 9,  0, 0, 0, 9,  0, 9, 9, 9,  9, 9, 0, 9,  9, 0, 0, 9,  0, 0, 0, 9,  1, 9, 9, 9,  9, 9, 0, 9],
+    kick:  [0, 0, 0, 0,  0, 0, 9, 0,  0, 0, 9, 0,  9, 0, 0, 0,  9, 0, 0, 0,  0, 0, 9, 0,  0, 0, 9, 0,  9, 0, 0, 0],
+    snare: [0, 0, 0, 0,  0, 0, 0, 0,  0, 0, 0, 9,  9, 0, 0, 0,  0, 0, 0, 0,  0, 0, 0, 0,  0, 0, 0, 0,  9, 0, 0, 0]
+  },
 }

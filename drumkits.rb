@@ -20,11 +20,19 @@ drum_kits = {
     snare: :bd_zome # bd_ada, :elec_hi_snare
   },
 # drum n bass
-# cuttoff 100, snare, 110
+# cuttoff: 100, 100, 110
 # hat less loud
   drum_n_bass: {
     hat:   :drum_cymbal_closed,
     kick:  :bd_ada,
     snare: :elec_hi_snare, #:drum_snare_hard
+  },
+  # footwork
+  # cutof: 100, 70, 80
+  # facs: 0.9, 0.9, 0.5
+  footwork: {
+    hat:   :elec_plip,
+    kick:  :bd_ada,
+    snare: :perc_snap
   }
 }
