@@ -1,77 +1,64 @@
+#todo:
+# - allow patterns with muliple lines
+# - prepare drone machine
+# - make a lib of rhythms
+# - sth like e orgel?
+# - make effects available (cutoff,..)
+# - configs (rhythm, sample, loudness, effects)
+
 drum_patterns = {
-  
-  curr: {
-    hat:   [5, 0, 0, 0,  5, 0, 0, 0,  5, 0, 0, 0,  5, 0, 0, 9],
-    kick:  [9, 9, 0, 9,  0, 9, 0, 9,  0, 0, 0, 3,  0, 0, 0, 0],
-    snare: [0, 0, 0, 0,  9, 0, 0, 2,  0, 1, 0, 0,  9, 0, 0, 1]
-  },
-  basic: {
-    hat:   [5, 0, 5, 0,  5, 0, 5, 0,  5, 0, 5, 0,  5, 0, 0, 0],
-    kick:  [9, 0, 9, 0,  0, 0, 0, 0,  9, 0, 0, 3,  0, 0, 0, 0],
-    snare: [0, 0, 0, 0,  9, 0, 0, 2,  0, 1, 0, 0,  9, 0, 0, 1]
-  },
-  swing: {
-    hat:   [5, 0, 5, 0,  2, 0, 2, 0,  5, 0, 5, 0,  5, 0, 5, 0],
+  tmp: {
+    hat:   [5, 0, 5, 0,  5, 0, 5, 0,  5, 0, 5, 0,  5, 0, 5, 0],
     kick:  [0, 9, 0, 9,  0, 0, 0, 0,  0, 9, 0, 3,  0, 0, 0, 0],
     snare: [0, 0, 0, 0,  9, 0, 0, 2,  0, 1, 0, 0,  9, 0, 0, 1]
   },
-  poly: {
-    hat:   [5, 4, 3, 1,  0, 0, 9, 0, 0, 0, 0, 0, 0, 0],
-    kick:  [9, 0, 0, 9,  9, 0, 0, 9],
-    snare: [0, 1, 2, 3,  4, 5, 0, 5, 0, 5, 0, 0, 9, 0, 0]
-  },
-  polyBackUp: {
+  poly2: {
     hat:   [5, 4, 3, 1,  0, 0, 9, 0, 0],
-    kick:  [9, 0, 0, 0,  9, 0, 0, 9],
-    snare: [0, 1, 6, 0,  7, 0]
+    kick:  [9, 0, 0, 0,  1, 0, 0, 9],
+    snare: [0, 0, 0, 0,  7, 0]
+  },
+  drum_n_bass: {
+    hat:   [9, 0, 9, 0,  9, 0, 9, 0,  9, 0, 7, 2,  9, 2, 9, 0],
+    kick:  [9, 0, 0, 0,  0, 0, 0, 0,  0, 0, 9, 0,  0, 0, 0, 0],
+    snare: [0, 0, 0, 0,  9, 0, 0, 0,  0, 0, 0, 0,  9, 0, 0, 0]
   }
 }
 
 drum_kits = {
-  acoustic: {
-    hat:   :drum_cymbal_closed,
-    kick:  :drum_bass_hard,
-    snare: :drum_snare_hard
-  },
-  acoustic_soft: {
-    hat:   :drum_cymbal_closed,
-    kick:  :drum_bass_soft,
-    snare: :drum_snare_soft
-  },
-  electro: {
-    hat:   :elec_triangle,
+  tmp: {
+    hat:   :elec_tick, #:elec_flip,
     kick:  :elec_soft_kick,
     snare: :elec_hi_snare
   },
-  toy: {
-    hat:   :elec_tick,
-    kick:  :elec_hollow_kick,
-    snare: :elec_pop
-  },
-  house: {
-    hat:   :perc_snap,
-    kick:  :bd_haus,
-    snare: :bd_zome
-  },
-  house2: {
-    hat:   :perc_snap,
-    kick:  :bd_haus,
-    snare: :elec_pop
+  drum_n_bass: {
+    hat:   :drum_cymbal_closed,
+    kick:  :bd_ada,
+    snare: :elec_hi_snare, #:drum_snare_hard
   }
-  
-  #kick: bd_ada, :bd_sone
-  # trash: sn_generic
 }
 
+#hashes:
+pattern_h = drum_patterns.keys
+kit_h = drum_kits.keys
 #####################################################################################################
-set :bpm , 110
-current_drum_kit = drum_kits[:house2]
-current_drum_pattern = drum_patterns[:polyBackUp]
+set :bpm , 180
+
+#by name:
+#current_drum_kit = drum_kits[:house]
+#current_drum_pattern = drum_patterns[:tech]
+
+#by index
+current_drum_kit = drum_kits[kit_h[0]]
+current_drum_pattern = drum_patterns[pattern_h[2]]
 
 #fade masters:
-set :hat_fac , 0.9
+set :hat_fac , 0.2
 set :kick_fac, 0.9
 set :snare_fac, 0.9
+
+set :hat_coff, 100
+set :kick_coff, 130
+set :snare_coff, 110
 #####################################################################################################
 
 live_loop :pulse do # simple pulse, to synch
@@ -100,7 +87,7 @@ live_loop :machine do
   i_kick = get[:it_kick]
   i_snare = get[:it_snare]
   sync :pulse
-  sample current_drum_kit[:hat],       amp: current_drum_pattern[:hat][i_hat] * 0.9 * get[:hat_fac]
-  sample current_drum_kit[:kick],      amp: current_drum_pattern[:kick][i_kick] * 0.9 * get[:kick_fac]
-  sample current_drum_kit[:snare],     amp: current_drum_pattern[:snare][i_snare] *0.9 * get[:snare_fac]
+  sample current_drum_kit[:hat],       amp: current_drum_pattern[:hat][i_hat] * 0.9 * get[:hat_fac], cutoff: get[:hat_coff]
+  sample current_drum_kit[:kick],      amp: current_drum_pattern[:kick][i_kick] * 0.9 * get[:kick_fac], cutoff: get[:kick_coff]#, hpf: 20
+  sample current_drum_kit[:snare],     amp: current_drum_pattern[:snare][i_snare] *0.9 * get[:snare_fac], cutoff: get[:snare_coff] #cutoff: 100
 end
