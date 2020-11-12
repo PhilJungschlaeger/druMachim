@@ -36,5 +36,10 @@ drum_kits = {
     hat:   :drum_cymbal_closed,
     kick:  :bd_ada,
     snare: :elec_twip
+  },
+    noWho: { # with_fx :echo, phase: 0.18, decay: 4 do, bpm 80
+    hat:   :drum_cymbal_closed, #cof 80, fac 1.0
+    kick:  :drum_cymbal_pedal, #cof 100, fac 0.5
+    snare: :drum_cymbal_closed #cof 120, fac 0.5
   }
 }
